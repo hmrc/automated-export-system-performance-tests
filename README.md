@@ -12,10 +12,10 @@ Performance test suite for the `Automated Export System`, using [performance-tes
 
 Start Mongo Docker container following instructions from the [MDTP Handbook](https://docs.tax.service.gov.uk/mdtp-handbook/documentation/developer-set-up/set-up-mongodb.html).
 
-Start `AUTOMATED_EXPORT_SYSTEM_API_TESTS` services as follows:
+Start `AUTOMATED_EXPORT_SYSTEM_UI_TESTS` services as follows:
 
 ```bash
-sm2 --start AUTOMATED_EXPORT_SYSTEM_API_TESTS
+sm2 --start AUTOMATED_EXPORT_SYSTEM_UI_TESTS
 ```
 
 ### Logging
