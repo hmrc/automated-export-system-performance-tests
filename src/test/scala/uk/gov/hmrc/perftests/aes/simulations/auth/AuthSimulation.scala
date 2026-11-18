@@ -14,20 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.aes.requests
+package uk.gov.hmrc.perftests.aes.simulations.auth
 
-import io.gatling.core.Predef._
-import io.gatling.http.Predef._
-import io.gatling.http.request.builder.HttpRequestBuilder
-import uk.gov.hmrc.performance.conf.ServicesConfiguration
+import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
+import uk.gov.hmrc.perftests.aes.requests.auth.AuthLoginStubRequest
 
-object AesRequests extends ServicesConfiguration {
+trait AuthSimulation {
+  this: PerformanceTestRunner =>
 
-  val baseUrl: String = baseUrlFor("automated-export-system-frontend")
-
-  val getPing: HttpRequestBuilder =
-    http("Get AES Frontend Ping")
-      .get(s"$baseUrl/ping/ping")
-      .check(status.is(200))
-
+  setup("login", "auth-login-stub") withRequests (AuthLoginStubRequest.journey: _*)
 }

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.perftests.aes
+package uk.gov.hmrc.perftests.aes.utils
+import java.util.UUID
 
-import io.gatling.core.Predef._
-import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
-import uk.gov.hmrc.perftests.aes.requests.AesRequests._
+object TestDataGenerators {
 
-class AesUiSimulation extends PerformanceTestRunner {
+  def generateMrn(): String = {
+    val digits     = UUID.randomUUID().toString.replace("-", "").filter(_.isDigit).take(12).padTo(12, '0')
+    val safeDigits = if (digits.head == '5' || digits.head == '6') s"7${digits.tail}" else digits
 
-  setup("aesPing", "AES Frontend Ping Journey") withRequests getPing
+    s"26GB${safeDigits}A9"
 
-  runSimulation()
-
+  }
 }
